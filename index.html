@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FINDTube</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="menu-btn" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- LOGO JOYI — RAsm topib qoyasila  -->
+    <a href="#" class="logo-link" id="homeLink">
+      <div class="logo-placeholder" id="logoArea">
+        <!-- img tag: <img src="YOUR_LOGO.png" alt="Logo" class="logo-img"> -->
+        <span class="logo-icon"><i class="fab fa-youtube"></i></span>
+        <span class="logo-text">FindTube</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="nav-center">
+    <div class="search-wrapper">
+      <input type="text" class="search-input" id="searchInput" placeholder="Qidirish..."/>
+      <button class="search-btn" id="searchBtn" aria-label="Qidirish">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <button class="mic-btn" aria-label="Ovozli qidiruv">
+      <i class="fas fa-microphone"></i>
+    </button>
+  </div>
+
+  <div class="nav-right">
+    <button class="nav-icon-btn" id="notifBtn" aria-label="Bildirishnomalar">
+      <i class="fas fa-bell"></i>
+      <span class="badge">3</span>
+    </button>
+    <button class="nav-icon-btn" aria-label="Yuklash">
+      <i class="fas fa-video"></i>
+    </button>
+    <div class="avatar-wrap" id="avatarBtn">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user1" alt="Avatar" class="avatar"/>
+    </div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <a href="#" class="sidebar-item active" data-page="home">
+      <i class="fas fa-home"></i><span>Asosiy</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="shorts">
+      <i class="fas fa-bolt"></i><span>Shorts</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="subscriptions">
+      <i class="fas fa-play-circle"></i><span>Obunalar</span>
+    </a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-section">
+    <p class="sidebar-label">Siz uchun</p>
+    <a href="#" class="sidebar-item" data-page="history">
+      <i class="fas fa-history"></i><span>Tarix</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="playlists">
+      <i class="fas fa-list"></i><span>Pleylistlar</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="liked">
+      <i class="fas fa-thumbs-up"></i><span>Yoqqan videolar</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="watchlater">
+      <i class="fas fa-clock"></i><span>Keyinroq ko'rish</span>
+    </a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-section">
+    <p class="sidebar-label">Kanallar</p>
+    <a href="#" class="sidebar-item channel-item" data-page="channel1">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ch1" class="channel-avatar" alt="Kanal"/>
+      <span>Tech Uzbek</span>
+    </a>
+    <a href="#" class="sidebar-item channel-item" data-page="channel2">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ch2" class="channel-avatar" alt="Kanal"/>
+      <span>Dasturlash UZ</span>
+    </a>
+    <a href="#" class="sidebar-item channel-item" data-page="channel3">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ch3" class="channel-avatar" alt="Kanal"/>
+      <span>Junior Dev</span>
+    </a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-section">
+    <a href="#" class="sidebar-item" data-page="settings">
+      <i class="fas fa-cog"></i><span>Sozlamalar</span>
+    </a>
+    <a href="#" class="sidebar-item" data-page="help">
+      <i class="fas fa-question-circle"></i><span>Yordam</span>
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content" id="mainContent">
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <!-- Category Chips -->
+    <div class="chips-wrap" id="chipsWrap">
+      <button class="chip active" data-cat="all">Barchasi</button>
+      <button class="chip" data-cat="tech">Texnologiya</button>
+      <button class="chip" data-cat="programming">Dasturlash</button>
+      <button class="chip" data-cat="design">Dizayn</button>
+      <button class="chip" data-cat="science">Fan</button>
+      <button class="chip" data-cat="music">Musiqa</button>
+      <button class="chip" data-cat="gaming">O'yinlar</button>
+      <button class="chip" data-cat="cooking">Taom</button>
+      <button class="chip" data-cat="travel">Sayohat</button>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="video-grid" id="videoGrid"></div>
+  </div>
+
+  <!-- SHORTS PAGE -->
+  <div class="page" id="page-shorts">
+    <div class="page-header"><h2><i class="fas fa-bolt"></i> Shorts</h2></div>
+    <div class="shorts-grid" id="shortsGrid"></div>
+  </div>
+
+  <!-- SUBSCRIPTIONS PAGE -->
+  <div class="page" id="page-subscriptions">
+    <div class="page-header"><h2><i class="fas fa-play-circle"></i> Obunalar</h2></div>
+    <div class="video-grid" id="subsGrid"></div>
+  </div>
+
+  <!-- HISTORY PAGE -->
+  <div class="page" id="page-history">
+    <div class="page-header">
+      <h2><i class="fas fa-history"></i> Ko'rish tarixi</h2>
+      <button class="clear-btn" id="clearHistory"><i class="fas fa-trash"></i> Tozalash</button>
+    </div>
+    <div class="video-grid" id="historyGrid"></div>
+    <div class="empty-state" id="historyEmpty" style="display:none">
+      <i class="fas fa-history fa-3x"></i>
+      <p>Ko'rish tarixi bo'sh</p>
+    </div>
+  </div>
+
+  <!-- PLAYLISTS PAGE -->
+  <div class="page" id="page-playlists">
+    <div class="page-header"><h2><i class="fas fa-list"></i> Pleylistlar</h2></div>
+    <div class="playlists-grid" id="playlistsGrid"></div>
+  </div>
+
+  <!-- LIKED PAGE -->
+  <div class="page" id="page-liked">
+    <div class="page-header"><h2><i class="fas fa-thumbs-up"></i> Yoqqan videolar</h2></div>
+    <div class="video-grid" id="likedGrid"></div>
+    <div class="empty-state" id="likedEmpty">
+      <i class="fas fa-thumbs-up fa-3x"></i>
+      <p>Hali yoqtirilgan video yo'q</p>
+    </div>
+  </div>
+
+  <!-- WATCH LATER PAGE -->
+  <div class="page" id="page-watchlater">
+    <div class="page-header"><h2><i class="fas fa-clock"></i> Keyinroq ko'rish</h2></div>
+    <div class="video-grid" id="watchlaterGrid"></div>
+    <div class="empty-state" id="watchlaterEmpty">
+      <i class="fas fa-clock fa-3x"></i>
+      <p>Keyinroq ko'rish ro'yxati bo'sh</p>
+    </div>
+  </div>
+
+  <!-- SETTINGS PAGE -->
+  <div class="page" id="page-settings">
+    <div class="page-header"><h2><i class="fas fa-cog"></i> Sozlamalar</h2></div>
+    <div class="settings-card">
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-title">Qorong'u rejim</span>
+          <span class="setting-desc">Fon rangini o'zgartirish</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkModeToggle" checked/>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-title">Avtoijro</span>
+          <span class="setting-desc">Video tugagach keyingisini boshlash</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="autoplayToggle" checked/>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-title">Bildirishnomalar</span>
+          <span class="setting-desc">Push xabarnomalarni yoqish</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notifToggle" checked/>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-title">Video sifati</span>
+          <span class="setting-desc">Standart sifat</span>
+        </div>
+        <select class="setting-select">
+          <option>Auto</option>
+          <option>1080p</option>
+          <option>720p</option>
+          <option>480p</option>
+          <option>360p</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-title">Til</span>
+          <span class="setting-desc">Interfeys tili</span>
+        </div>
+        <select class="setting-select">
+          <option>O'zbekcha</option>
+          <option>Русский</option>
+          <option>English</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELP PAGE -->
+  <div class="page" id="page-help">
+    <div class="page-header"><h2><i class="fas fa-question-circle"></i> Yordam markazi</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Video qanday yuklash mumkin? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Navbar yuqorisidagi kamera belgisini bosing va video faylingizni tanlang.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Kanal ochish mumkinmi? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Ha, profil rasmingizni bosib "Kanal yaratish" tugmasini tanlang.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Obuna qanday bekor qilinadi? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Kanal sahifasiga kiring va "Obunada" tugmasini bosib bekor qiling.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Ko'rish tarixi o'chiriladimi? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Ha, Tarix sahifasidagi "Tozalash" tugmasi orqali o'chirib tashlashingiz mumkin.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANNEL PAGES (1,2,3) -->
+  <div class="page" id="page-channel1"></div>
+  <div class="page" id="page-channel2"></div>
+  <div class="page" id="page-channel3"></div>
+
+  <!-- SEARCH RESULTS PAGE -->
+  <div class="page" id="page-search">
+    <div class="page-header"><h2 id="searchTitle">Qidiruv natijalari</h2></div>
+    <div class="video-grid" id="searchGrid"></div>
+    <div class="empty-state" id="searchEmpty" style="display:none">
+      <i class="fas fa-search fa-3x"></i>
+      <p>Hech narsa topilmadi</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle">Video nomi</h3>
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-player">
+      <iframe id="modalIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="modal-meta">
+      <div class="modal-info">
+        <img class="modal-channel-avatar" id="modalAvatar" src="" alt=""/>
+        <div>
+          <p class="modal-channel-name" id="modalChannel"></p>
+          <p class="modal-views" id="modalViews"></p>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="action-btn like-btn" id="modalLike"><i class="fas fa-thumbs-up"></i> <span id="likeCount">0</span></button>
+        <button class="action-btn" id="modalSave"><i class="fas fa-clock"></i> Saqlash</button>
+        <button class="action-btn" id="modalShare"><i class="fas fa-share"></i> Ulashish</button>
+      </div>
+    </div>
+    <div class="modal-desc" id="modalDesc"></div>
+  </div>
+</div>
+
+<!-- NOTIFICATION DROPDOWN -->
+<div class="notif-dropdown" id="notifDropdown">
+  <div class="notif-header"><span>Bildirishnomalar</span><button class="notif-clear">Barchasini o'qish</button></div>
+  <div class="notif-item unread"><i class="fas fa-play-circle"></i><div><p>Tech Uzbek yangi video yukladi</p><span>2 soat oldin</span></div></div>
+  <div class="notif-item unread"><i class="fas fa-thumbs-up"></i><div><p>Videongiz 100 ta like oldi!</p><span>5 soat oldin</span></div></div>
+  <div class="notif-item unread"><i class="fas fa-comment"></i><div><p>Sizning izohingizga javob berildi</p><span>1 kun oldin</span></div></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
